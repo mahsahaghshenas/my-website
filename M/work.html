@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="JQ/jquery-3.6.3.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- boot**** -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- boot**** -->
+    <title>work</title>
+    <style>
+        *{
+            margin: 0;padding: 0;box-sizing: border-box;
+        }
+        body{
+            background-color: rgb(243, 243, 243);
+        }
+        .container{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;            
+            margin-top: 50px;
+            overflow: hidden;
+        }
+        .filterDiv{
+            float: left;
+            width: 100px;
+            text-align: center;
+            margin: 2px;
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+
+        /* Style the buttons */
+        #myBtnContainer{
+            display: block;
+        }
+        .btn {
+            border: none;
+            outline: none;
+            padding: 12px 16px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ddd; 
+        }
+
+        .btn.active {
+            background-color: #666;
+            color: white;
+        }
+        .card{
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+        .card>img{
+            transition: 0.5s;
+        }
+        .card:hover img{
+            transform: scale(1.01);
+        }
+        .card:hover{
+            border: 2px solid rgb(216, 0, 216);
+        }
+        .card-body>a{
+            padding: 5px 8px;
+            border-radius: 3px;
+            text-decoration: none;
+        }
+        .card-body>a>i{
+            width: 10px;
+            height: 10px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <!-- btn***** -->
+        <div id="myBtnContainer">
+            <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+            <button class="btn" onclick="filterSelection('cars')"> Cars</button>
+            <button class="btn" onclick="filterSelection('animals')"> Animals</button>
+            <button class="btn" onclick="filterSelection('fruits')"> Fruits</button>
+            <button class="btn" onclick="filterSelection('colors')"> Colors</button>
+        </div>
+    <!-- btn***** -->
+</div>
+    <div class="container">
+        <div class="card filterDiv" style="width: 300px">
+            <img class="card-img-top" src="img/woman-avatar-profile-vector-21372067.jpg" alt="" style="width: 100%;">
+            <div class="card-body">
+                <h4 class="card-title">lorem</h4>
+                <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                <a href="#" class="btn-primary">See more <i class="fa-regular fa-circle-chevron-right"></i></a>
+            </div>
+        </div>
+        <div class="card filterDiv" style="width: 300px">
+            <img class="card-img-top" src="img/woman-avatar-profile-vector-21372067.jpg" alt="" style="width: 100%;">
+            <div class="card-body">
+                <h4 class="card-title">lorem</h4>
+                <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                <a href="#" class="btn-primary">See more</a>
+            </div>
+        </div>
+        <div class="card filterDiv" style="width: 300px">
+            <img class="card-img-top" src="img/woman-avatar-profile-vector-21372067.jpg" alt="" style="width: 100%;">
+            <div class="card-body">
+                <h4 class="card-title">lorem</h4>
+                <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                <a href="#" class="btn-primary">See more</a>
+            </div>
+        </div>
+        <div class="card filterDiv" style="width: 300px">
+            <img class="card-img-top" src="img/woman-avatar-profile-vector-21372067.jpg" alt="" style="width: 100%;">
+            <div class="card-body">
+                <h4 class="card-title">lorem</h4>
+                <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                <a href="#" class="btn-primary">See more</a>
+            </div>
+        </div>
+        <div class="card filterDiv" style="width: 300px">
+            <img class="card-img-top" src="img/woman-avatar-profile-vector-21372067.jpg" alt="" style="width: 100%;">
+            <div class="card-body">
+                <h4 class="card-title">lorem</h4>
+                <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                <a href="#" class="btn-primary">See more</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        filterSelection("all")
+        function filterSelection(c) {
+          var x, i;
+          x = document.getElementsByClassName("filterDiv");
+          if (c == "all") c = "";
+          for (i = 0; i < x.length; i++) {
+            w3RemoveClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+          }
+        }
+        
+        function w3AddClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+          }
+        }
+        
+        function w3RemoveClass(element, name) {
+          var i, arr1, arr2;
+          arr1 = element.className.split(" ");
+          arr2 = name.split(" ");
+          for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+              arr1.splice(arr1.indexOf(arr2[i]), 1);     
+            }
+          }
+          element.className = arr1.join(" ");
+        }
+        
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener("click", function(){
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+          });
+        }
+        </script>
+
+
+</body>
+</html>
